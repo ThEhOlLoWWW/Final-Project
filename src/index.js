@@ -1,29 +1,41 @@
-import promptSync from 'prompt-sync';
-import { normaliserNom } from './progression.js';
-import { validerResultat } from './progression.js';
-import { ajouterApprenant } from './progression.js';
+import promptSync from "prompt-sync";
+import {
+  ajouterApprenant,
+  rechercherApprenant,
+  calculerProgression,
+} from "./progression.js";
 
-console.log(normaliserNom("   lOgOs   "));
-validerResultat(8, 15, 10); // Should print an error and return false
-validerResultat(3, 10, 20); // Should return true
+const prompt = promptSync();
+let applicationActive = true;
 
-// Test 1: Sara's ID (Should fail)
-ajouterApprenant(1, "Hackerman", "Oujda");
+while (applicationActive) {
+  console.log("\n=== GESTION DES APPRENANTS ===");
+  console.log("1. Ajouter un apprenant");
+  console.log("2. Rechercher un apprenant");
+  console.log("3. Calculer la progression");
+  console.log("0. Quitter");
+  console.log("==============================");
 
-// Test 2: New ID (Should succeed)
-ajouterApprenant(3, "LOGOS", "Nador");
+  let choix = prompt("Veuillez choisir une option (0-3) : ");
 
-import { rechercherApprenant } from './progression.js';
+  switch (choix) {
+    case "1":
+      console.log("\n--- Ajout d'un apprenant ---");
 
-console.log("--- TEST 1: The Perfect ID ---");
-console.log(rechercherApprenant(1)); 
+      break;
+    case "2":
+      console.log("\n--- Recherche ---");
 
-console.log("\n--- TEST 2: The Messy Name ---");
-console.log(rechercherApprenant("   sArA dEv   ")); 
+      break;
+    case "3":
+      console.log("\n--- Calcul de Progression ---");
 
-console.log("\n--- TEST 3: The Ghost ---");
-console.log(rechercherApprenant(99));
-
-import { calculerProgression } from './progression.js';
-
-console.log(calculerProgression(1));
+      break;
+    case "0":
+      console.log("Fermeture de l'application. Au revoir !");
+      applicationActive = false;
+      break;
+    default:
+      console.log("Erreur : Option invalide.");
+  }
+}
