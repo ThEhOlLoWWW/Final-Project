@@ -4,7 +4,7 @@ export function normaliserNom(nom) {
     return nom.trim().toLowerCase();
 }
 
-export function validerResultat(jour, exercicesTermines, totalExercices) {
+export function validerResultat(jour, exercicesTermines, totalExercices, challengeTermine) {
     if (jour < 1 || jour > 7) {
         console.log("Erreur: Le jour doit être entre 1 et 7.");
         return false;
@@ -33,10 +33,11 @@ export function ajouterApprenant(id, nomComplet, ville) {
         ville: ville,
         resultats: [],
     }
-
-
     apprenants.push(obj);
     console.log("Added successfully");
     return true;
-
 }
+
+export function rechercherApprenant(critere){
+    
+} 
