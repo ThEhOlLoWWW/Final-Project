@@ -39,5 +39,9 @@ export function ajouterApprenant(id, nomComplet, ville) {
 }
 
 export function rechercherApprenant(critere){
-    
+    for ( let item of apprenants ){
+        if ( normaliserNom(critere) === normaliserNom(item.nomComplet) || critere === item.id){
+            return item;
+        }
+    }
 } 
