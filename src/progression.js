@@ -1,73 +1,85 @@
-import { apprenants } from './data.js';
+import { apprenants } from "./data.js";
 
 export function normaliserNom(nom) {
-    return String(nom).trim().toLowerCase();
+  return String(nom).trim().toLowerCase();
 }
 
-export function validerResultat(jour, exercicesTermines, totalExercices, challengeTermine) {
-    if (jour < 1 || jour > 7) {
-        console.log("Erreur: Le jour doit être entre 1 et 7.");
-        return false;
-    }
-    if (exercicesTermines < 0 || totalExercices < 0) {
-        console.log("Erreur: Le nombre d'exercices terminés ne peut pas etre negative");
-        return false;
-    }
-    if (exercicesTermines > totalExercices) {
-        console.log("Erreur: Le nombre d'exercices terminés ne peut pas dépasser le total proposé.");
-        return false;
-    }
-    if (challengeTermine !== Boolean){
-        console.log("Erreur: must be boolean value ");
-        return false;
-    }
-    return true;
+export function validerResultat(
+  jour,
+  exercicesTermines,
+  totalExercices,
+  challengeTermine,
+) {
+  if (jour < 1 || jour > 7) {
+    console.log("Erreur: Le jour doit être entre 1 et 7.");
+    return false;
+  }
+  if (exercicesTermines < 0 || totalExercices < 0) {
+    console.log(
+      "Erreur: Le nombre d'exercices terminés ne peut pas etre negative",
+    );
+    return false;
+  }
+  if (exercicesTermines > totalExercices) {
+    console.log(
+      "Erreur: Le nombre d'exercices terminés ne peut pas dépasser le total proposé.",
+    );
+    return false;
+  }
+  if (challengeTermine !== Boolean) {
+    console.log("Erreur: must be boolean value ");
+    return false;
+  }
+  return true;
 }
 
 export function ajouterApprenant(nomComplet, ville) {
-    for (let item of apprenants) {
-        if (nomComplet === item.nomComplet) {
-            console.log("Apprenant is already existed");
-            return false;
-        }
+  for (let item of apprenants) {
+    if (nomComplet === item.nomComplet) {
+      console.log("Apprenant is already existed");
+      return false;
     }
-    let obj = {
-        id: apprenants.length + 1,
-        nomComplet: nomComplet,
-        ville: ville,
-        resultats: [],
-    }
-    apprenants.push(obj);
-    console.log("Added successfully");
-    return true;
+  }
+  let obj = {
+    id: apprenants.length + 1,
+    nomComplet: nomComplet,
+    ville: ville,
+    resultats: [],
+  };
+  apprenants.push(obj);
+  console.log("Added successfully");
+  return true;
 }
 
-export function rechercherApprenant(critere){
-    for ( let item of apprenants ){
-        if ( normaliserNom(critere) === normaliserNom(item.nomComplet) || critere === item.id){
-            return item;
-        } 
+export function rechercherApprenant(critere) {
+  for (let item of apprenants) {
+    if (
+      normaliserNom(critere) === normaliserNom(item.nomComplet) ||
+      critere === item.id
+    ) {
+      return item;
     }
-    console.log("Apprenant non trouvé");
-        return null;
-} 
+  }
+  console.log("Apprenant non trouvé");
+  return null;
+}
 
-export function calculerProgression(id){
-    let cible = rechercherApprenant(id)
-    if (cible === null){
-        console.log("Apprenant n'exist pas");
-        return 0;
-    }
-     if (cible.resultats.length === 0){
-        return 0;   
-    }
-    let totalTerminer = 0;
-    let totalProposer= 0
+export function calculerProgression(id) {
+  let cible = rechercherApprenant(id);
+  if (cible === null) {
+    console.log("Apprenant n'exist pas");
+    return 0;
+  }
+  if (cible.resultats.length === 0) {
+    return 0;
+  }
+  let totalTerminer = 0;
+  let totalProposer = 0;
 
-    for ( let item of cible.resultats){
-        totalProposer += item.totalExercices;
-        totalTerminer += item.exercicesTermines;
-    }
+  for (let item of cible.resultats) {
+    totalProposer += item.totalExercices;
+    totalTerminer += item.exercicesTermines;
+  }
 
-    return Math.round((totalTerminer/totalProposer) * 100);
+  return Math.round((totalTerminer / totalProposer) * 100);
 }
