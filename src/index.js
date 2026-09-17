@@ -12,3 +12,14 @@ ajouterApprenant(1, "Hackerman", "Oujda");
 
 // Test 2: New ID (Should succeed)
 ajouterApprenant(3, "LOGOS", "Nador");
+
+import { rechercherApprenant } from './progression.js';
+
+console.log("--- TEST 1: The Perfect ID ---");
+console.log(rechercherApprenant(1)); 
+
+console.log("\n--- TEST 2: The Messy Name ---");
+console.log(rechercherApprenant("   sArA dEv   ")); 
+
+console.log("\n--- TEST 3: The Ghost ---");
+console.log(rechercherApprenant(99));

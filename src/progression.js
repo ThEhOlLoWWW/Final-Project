@@ -1,7 +1,7 @@
 import { apprenants } from './data.js';
 
 export function normaliserNom(nom) {
-    return nom.trim().toLowerCase();
+    return String(nom).trim().toLowerCase();
 }
 
 export function validerResultat(jour, exercicesTermines, totalExercices, challengeTermine) {
@@ -47,6 +47,7 @@ export function rechercherApprenant(critere){
         if ( normaliserNom(critere) === normaliserNom(item.nomComplet) || critere === item.id){
             return item;
         } 
-
     }
+    console.log("Apprenant non trouvé");
+        return null;
 } 
