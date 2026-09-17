@@ -23,3 +23,7 @@ console.log(rechercherApprenant("   sArA dEv   "));
 
 console.log("\n--- TEST 3: The Ghost ---");
 console.log(rechercherApprenant(99));
+
+import { calculerProgression } from './progression.js';
+
+console.log(calculerProgression(1));

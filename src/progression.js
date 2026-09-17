@@ -18,21 +18,21 @@ export function validerResultat(jour, exercicesTermines, totalExercices, challen
         return false;
     }
     if (challengeTermine !== Boolean){
-        console.log("Erreur: must be boolien value ");
+        console.log("Erreur: must be boolean value ");
         return false;
     }
     return true;
 }
 
-export function ajouterApprenant(id, nomComplet, ville) {
-    for (let i of apprenants) {
-        if (id === i.id) {
-            console.log("ID is already existing");
+export function ajouterApprenant(nomComplet, ville) {
+    for (let item of apprenants) {
+        if (nomComplet === item.nomComplet) {
+            console.log("Apprenant is already existed");
             return false;
         }
     }
     let obj = {
-        id: id,
+        id: apprenants.length + 1,
         nomComplet: nomComplet,
         ville: ville,
         resultats: [],
@@ -51,3 +51,23 @@ export function rechercherApprenant(critere){
     console.log("Apprenant non trouvé");
         return null;
 } 
+
+export function calculerProgression(id){
+    let cible = rechercherApprenant(id)
+    if (cible === null){
+        console.log("Apprenant n'exist pas");
+        return 0;
+    }
+     if (cible.resultats.length === 0){
+        return 0;   
+    }
+    let totalTerminer = 0;
+    let totalProposer= 0
+
+    for ( let item of cible.resultats){
+        totalProposer += item.totalExercices;
+        totalTerminer += item.exercicesTermines;
+    }
+
+    return Math.round((totalTerminer/totalProposer) * 100);
+}
