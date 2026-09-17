@@ -35,7 +35,7 @@ export function validerResultat(
 
 export function ajouterApprenant(nomComplet, ville) {
   for (let item of apprenants) {
-    if (nomComplet === item.nomComplet) {
+    if (normaliserNom(nomComplet) === normaliserNom(item.nomComplet)) {
       console.log("Apprenant is already existed");
       return false;
     }
@@ -67,7 +67,7 @@ export function rechercherApprenant(critere) {
 export function calculerProgression(id) {
   let cible = rechercherApprenant(id);
   if (cible === null) {
-    console.log("Apprenant n'exist pas");
+    console.log("Apprenant n'exist pas exister");
     return 0;
   }
   if (cible.resultats.length === 0) {

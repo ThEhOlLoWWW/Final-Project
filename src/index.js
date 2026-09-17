@@ -21,10 +21,26 @@ while (applicationActive) {
   switch (choix) {
     case "1":
       console.log("\n--- Ajout d'un apprenant ---");
+      let nomSaisi = prompt("Entrez le nom complet : ");
+      let villeSaisie = prompt("Entrez la ville : ");
 
+      ajouterApprenant(nomSaisi, villeSaisie);
       break;
     case "2":
       console.log("\n--- Recherche ---");
+
+      let saisie = prompt("Entrez l'ID ou le nom de l'apprenant : ");
+      let resultatsRecherche;
+
+      if (isNaN(saisie)) {
+        resultatsRecherche = rechercherApprenant(saisie);
+      } else {
+        resultatsRecherche = rechercherApprenant(Number(saisie));
+      }
+
+      if (resultatsRecherche !== null) {
+        console.log(resultatsRecherche);
+      }
 
       break;
     case "3":
