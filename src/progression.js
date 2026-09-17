@@ -17,6 +17,10 @@ export function validerResultat(jour, exercicesTermines, totalExercices, challen
         console.log("Erreur: Le nombre d'exercices terminés ne peut pas dépasser le total proposé.");
         return false;
     }
+    if (challengeTermine !== Boolean){
+        console.log("Erreur: must be boolien value ");
+        return false;
+    }
     return true;
 }
 
@@ -42,6 +46,7 @@ export function rechercherApprenant(critere){
     for ( let item of apprenants ){
         if ( normaliserNom(critere) === normaliserNom(item.nomComplet) || critere === item.id){
             return item;
-        }
+        } 
+
     }
 } 
