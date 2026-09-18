@@ -169,7 +169,7 @@ export function trierParProgression() {
 export function trierParOrdreAlphabetique() {
   let copie = [...apprenants];
   for (let i = 0; i < copie.length; i++) {
-    for (let j = i + 1; i < copie.length; i++) {
+    for (let j = i + 1; j < copie.length; j++) {
       let nomA = copie[i].nomComplet.toLowerCase();
       let nomB = copie[j].nomComplet.toLowerCase();
 
