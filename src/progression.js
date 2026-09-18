@@ -26,6 +26,9 @@ export function validerResultat(
     );
     return false;
   }
+  if (totalExercices > 20) {
+    return false;
+  }
   if (challengeTermine !== 1 && challengeTermine !== 0) {
     console.log("Erreur: must be eaither 1 or 0 ");
     return false;
