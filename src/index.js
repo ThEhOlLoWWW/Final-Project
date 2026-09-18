@@ -3,6 +3,7 @@ import {
   ajouterApprenant,
   rechercherApprenant,
   calculerProgression,
+  enregistrerResultat,
 } from "./progression.js";
 
 const prompt = promptSync();
@@ -13,6 +14,7 @@ while (applicationActive) {
   console.log("1. Ajouter un apprenant");
   console.log("2. Rechercher un apprenant");
   console.log("3. Calculer la progression");
+  console.log("4. Enregistrer un résultat");
   console.log("0. Quitter");
   console.log("==============================");
 
@@ -50,6 +52,28 @@ while (applicationActive) {
       let progression = calculerProgression(idProgression);
       console.log(`Progress Actuel: ${progression}`);
 
+      break;
+    case "4":
+      console.log("\n--- Enregistrer un résultat ---");
+      let idResultat = Number(prompt("Saisi ID: "));
+      let jour = Number(prompt("Saisi Le Jour: "));
+      let exercicesTermines = Number(
+        prompt("Saisi Le nombres des exersercices terminer "),
+      );
+      let totalExercices = Number(
+        prompt("Saisi Le nombre total des exercices donnée "),
+      );
+      let challengeTermine = Number(
+        prompt("Challenge terminer ? saisi 1 (yes), ou 0 (no): "),
+      );
+
+      enregistrerResultat(
+        idResultat,
+        jour,
+        exercicesTermines,
+        totalExercices,
+        challengeTermine,
+      );
       break;
     case "0":
       console.log("Fermeture de l'application. Au revoir !");

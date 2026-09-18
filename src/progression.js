@@ -93,7 +93,6 @@ export function enregistrerResultat(
 ) {
   let cible = rechercherApprenant(id);
   if (cible === null) {
-    console.log("Apprenant n'exist pas");
     return false;
   }
 
@@ -107,14 +106,14 @@ export function enregistrerResultat(
     return false;
   }
 
-  let newStudent = {
+  let newResults = {
     jour: jour,
     exercicesTermines: exercicesTermines,
     totalExercices: totalExercices,
     challengeTermine: challengeTermine === 1,
   };
 
-  cible.resultats.push(newStudent);
+  cible.resultats.push(newResults);
   console.log("Résultat enregistré avec succès !");
   return true;
 }
