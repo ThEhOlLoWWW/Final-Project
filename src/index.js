@@ -7,6 +7,7 @@ import {
   afficherApprenants,
   filtrerParNiveau,
   trierParProgression,
+  trierParOrdreAlphabetique,
 } from "./progression.js";
 
 const prompt = promptSync();
@@ -21,10 +22,11 @@ while (applicationActive) {
   console.log("5. Afficher Les Apprenants");
   console.log("6. Filtrer Les Apprenant Par Niveau");
   console.log("7. Triée Les Apprenant Par Progression");
+  console.log("8. Triée Les Apprenant Par Alphabetic Ordre");
   console.log("0. Quitter");
   console.log("==============================");
 
-  let choix = prompt("Veuillez choisir une option (0-7) : ");
+  let choix = prompt("Veuillez choisir une option (0-8) : ");
 
   switch (choix) {
     case "1":
@@ -100,11 +102,20 @@ while (applicationActive) {
 
       break;
     case "7":
-      console.log("\n--- Filtrer Les Etudiants ---");
+      console.log("\n--- Triée Les Etudiants Par Progression ---");
       let triée = trierParProgression();
       for (let i = 0; i < triée.length; i++) {
         let score = calculerProgression(triée[i].id);
         console.log(`${i + 1}. ${triée[i].nomComplet} | Progress: ${score}`);
+      }
+
+      break;
+    case "8":
+      console.log("\n--- Triée Les Etudiants Par Alphabetic Ordre ---");
+      let tri = trierParOrdreAlphabetique();
+      for (let i = 0; i < tri.length; i++) {
+        let scor = calculerProgression(tri[i].id);
+        console.log(`${i + 1}. ${tri[i].nomComplet} | ${scor}`);
       }
 
       break;

@@ -159,3 +159,20 @@ export function trierParProgression() {
   }
   return copie;
 }
+
+export function trierParOrdreAlphabetique() {
+  let copie = [...apprenants];
+  for (let i = 0; i < copie.length; i++) {
+    for (let j = i + 1; i < copie.length; i++) {
+      let nomA = copie[i].nomComplet.toLowerCase();
+      let nomB = copie[j].nomComplet.toLowerCase();
+
+      if (nomA > nomB) {
+        let temp = copie[i];
+        copie[i] = copie[j];
+        copie[j] = temp;
+      }
+    }
+  }
+  return copie;
+}
