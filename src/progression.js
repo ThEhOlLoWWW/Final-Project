@@ -53,11 +53,14 @@ export function ajouterApprenant(nomComplet, ville) {
 
 export function rechercherApprenant(critere) {
   for (let item of apprenants) {
-    if (
-      normaliserNom(critere) === normaliserNom(item.nomComplet) ||
-      critere === item.id
-    ) {
-      return item;
+    if (typeof critere === "string") {
+      if (normaliserNom(item.nomComplet).includes(normaliserNom(critere))) {
+        return item;
+      }
+    } else {
+      if (critere === item.id) {
+        return item;
+      }
     }
   }
   console.log("Apprenant non trouvé");
