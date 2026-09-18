@@ -83,3 +83,38 @@ export function calculerProgression(id) {
 
   return Math.round((totalTerminer / totalProposer) * 100);
 }
+
+export function enregistrerResultat(
+  id,
+  jour,
+  exercicesTermines,
+  totalExercices,
+  challengeTermine,
+) {
+  let cible = rechercherApprenant(id);
+  if (cible === null) {
+    console.log("Apprenant n'exist pas");
+    return false;
+  }
+
+  let estValider = validerResultat(
+    jour,
+    exercicesTermines,
+    totalExercices,
+    challengeTermine,
+  );
+  if (estValider === false) {
+    return false;
+  }
+
+  let newStudent = {
+    jour: jour,
+    exercicesTermines: exercicesTermines,
+    totalExercices: totalExercices,
+    challengeTermine: challengeTermine === 1,
+  };
+
+  cible.resultats.push(newStudent);
+  console.log("Résultat enregistré avec succès !");
+  return true;
+}
