@@ -27,6 +27,7 @@ export function validerResultat(
     return false;
   }
   if (totalExercices > 20) {
+    console.log("Erreur: Le nombre total d'exercices ne peut pas dépasser 20.");
     return false;
   }
   if (challengeTermine !== 1 && challengeTermine !== 0) {
