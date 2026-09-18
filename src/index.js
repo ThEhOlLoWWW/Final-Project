@@ -4,6 +4,7 @@ import {
   rechercherApprenant,
   calculerProgression,
   enregistrerResultat,
+  afficherApprenants,
 } from "./progression.js";
 
 const prompt = promptSync();
@@ -15,10 +16,11 @@ while (applicationActive) {
   console.log("2. Rechercher un apprenant");
   console.log("3. Calculer la progression");
   console.log("4. Enregistrer un résultat");
+  console.log("5. Afficher Les Apprenants");
   console.log("0. Quitter");
   console.log("==============================");
 
-  let choix = prompt("Veuillez choisir une option (0-3) : ");
+  let choix = prompt("Veuillez choisir une option (0-5) : ");
 
   switch (choix) {
     case "1":
@@ -74,6 +76,11 @@ while (applicationActive) {
         totalExercices,
         challengeTermine,
       );
+      break;
+    case "5":
+      console.log("\n--- Afficher Les Apprenants ---");
+      console.log(afficherApprenants());
+
       break;
     case "0":
       console.log("Fermeture de l'application. Au revoir !");

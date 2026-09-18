@@ -117,3 +117,16 @@ export function enregistrerResultat(
   console.log("Résultat enregistré avec succès !");
   return true;
 }
+
+export function afficherApprenants() {
+  console.log("\n=== LISTE DE TOUS LES APPRENANTS ===");
+
+  for (let item of apprenants) {
+    let progress = calculerProgression(item.id);
+    console.log(
+      `ID: ${item.id}, Name: ${item.nomComplet}, Ville: ${item.ville}, Progress: ${progress}`,
+    );
+  }
+  console.log("====================================");
+  return true;
+}
