@@ -142,3 +142,20 @@ export function filtrerParNiveau(nivo) {
   }
   return etudiantsfiltres;
 }
+
+export function trierParProgression() {
+  let copie = [...apprenants];
+  for (let i = 0; i < copie.length; i++) {
+    for (let j = i + 1; j < copie.length; j++) {
+      let scoreA = calculerProgression(copie[i].id);
+      let scoreB = calculerProgression(copie[j].id);
+
+      if (scoreA < scoreB) {
+        let temp = copie[i];
+        copie[i] = copie[j];
+        copie[j] = temp;
+      }
+    }
+  }
+  return copie;
+}

@@ -6,6 +6,7 @@ import {
   enregistrerResultat,
   afficherApprenants,
   filtrerParNiveau,
+  trierParProgression,
 } from "./progression.js";
 
 const prompt = promptSync();
@@ -19,10 +20,11 @@ while (applicationActive) {
   console.log("4. Enregistrer un résultat");
   console.log("5. Afficher Les Apprenants");
   console.log("6. Filtrer Les Apprenant Par Niveau");
+  console.log("7. Triée Les Apprenant Par Progression");
   console.log("0. Quitter");
   console.log("==============================");
 
-  let choix = prompt("Veuillez choisir une option (0-6) : ");
+  let choix = prompt("Veuillez choisir une option (0-7) : ");
 
   switch (choix) {
     case "1":
@@ -94,6 +96,15 @@ while (applicationActive) {
         console.log(
           `ID: ${item.id} | Nom: ${item.nomComplet} | Progression: ${score}%`,
         );
+      }
+
+      break;
+    case "7":
+      console.log("\n--- Filtrer Les Etudiants ---");
+      let triée = trierParProgression();
+      for (let i = 0; i < triée.length; i++) {
+        let score = calculerProgression(triée[i].id);
+        console.log(`${i + 1}. ${triée[i].nomComplet} | Progress: ${score}`);
       }
 
       break;
