@@ -46,6 +46,10 @@ while (applicationActive) {
     case "3":
       console.log("\n--- Calcul de Progression ---");
 
+      let idProgression = Number(prompt("Entrez l'ID de l'apprenant : "));
+      let progression = calculerProgression(idProgression);
+      console.log(`Progress Actuel: ${progression}`);
+
       break;
     case "0":
       console.log("Fermeture de l'application. Au revoir !");
