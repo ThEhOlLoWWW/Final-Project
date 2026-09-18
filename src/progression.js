@@ -124,9 +124,21 @@ export function afficherApprenants() {
   for (let item of apprenants) {
     let progress = calculerProgression(item.id);
     console.log(
-      `ID: ${item.id}, Name: ${item.nomComplet}, Ville: ${item.ville}, Progress: ${progress}`,
+      `ID: ${item.id} | Name: ${item.nomComplet} | Ville: ${item.ville} | Progress: ${progress}%`,
     );
   }
   console.log("====================================");
   return true;
+}
+
+export function filtrerParNiveau(nivo) {
+  let etudiantsfiltres = [];
+
+  for (let item of apprenants) {
+    let score = calculerProgression(item.id);
+    if (score >= nivo) {
+      etudiantsfiltres.push(item);
+    }
+  }
+  return etudiantsfiltres;
 }

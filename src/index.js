@@ -5,6 +5,7 @@ import {
   calculerProgression,
   enregistrerResultat,
   afficherApprenants,
+  filtrerParNiveau,
 } from "./progression.js";
 
 const prompt = promptSync();
@@ -17,10 +18,11 @@ while (applicationActive) {
   console.log("3. Calculer la progression");
   console.log("4. Enregistrer un résultat");
   console.log("5. Afficher Les Apprenants");
+  console.log("6. Filtrer Les Apprenant Par Niveau");
   console.log("0. Quitter");
   console.log("==============================");
 
-  let choix = prompt("Veuillez choisir une option (0-5) : ");
+  let choix = prompt("Veuillez choisir une option (0-6) : ");
 
   switch (choix) {
     case "1":
@@ -80,6 +82,19 @@ while (applicationActive) {
     case "5":
       console.log("\n--- Afficher Les Apprenants ---");
       console.log(afficherApprenants());
+
+      break;
+    case "6":
+      console.log("\n--- Filtrer Les Etudiants ---");
+      let nivoo = Number(prompt("Saisi Le Niveau Minimal: "));
+      let resultatsFiltrer = filtrerParNiveau(nivoo);
+
+      for (let item of resultatsFiltrer) {
+        let score = calculerProgression(item.id);
+        console.log(
+          `ID: ${item.id} | Nom: ${item.nomComplet} | Progression: ${score}%`,
+        );
+      }
 
       break;
     case "0":
