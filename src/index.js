@@ -85,7 +85,7 @@ while (applicationActive) {
       break;
     case "5":
       console.log("\n--- Afficher Les Apprenants ---");
-      console.log(afficherApprenants());
+      afficherApprenants()
 
       break;
     case "6":
